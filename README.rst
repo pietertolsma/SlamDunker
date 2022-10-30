@@ -1,6 +1,10 @@
-#SlamDunker
+===============
+ SlamDunker
+===============
 
-## How to run
+---------------
+ How to run
+---------------
 - Make sure you have 'poetry' installed.
 - `poetry install`
 - `poetry run python get_data.py`
