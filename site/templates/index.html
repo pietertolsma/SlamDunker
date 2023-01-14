@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>        
+        <style>
+            body {
+                background-color: #1DA1F2;
+            }
+
+            .white{
+                color: white;
+            }
+
+            .submit-btn {
+                background-color: #14171A;
+                color: white;
+            }
+
+            .mainbody {
+                margin-top: 100px;
+                max-width: 800px;
+            }
+
+            .historyhead {
+                color: white;
+                font-weight: 700;
+                margin: 4px 3px;
+            }
+
+            h1 a {
+                text-decoration: none;
+                color: white;
+            }
+
+            .history {
+                background-color: #E1E8ED;
+                border-radius: 10px;
+                margin: 0px 2px;
+                overflow: hidden;
+            }
+
+            .links {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .links a {
+                color: #E1E8ED;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+
+            .icon {
+                width: 25px;
+                height: 25px;
+                margin-right: 10px;
+            }
+
+            .history-tweet {
+                background-color: #F5F8FA;
+                padding: 10px;
+                margin: 4px 0px;
+                display: flex;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mainbody">
+            <div class="row center">
+                <h1 class="white"><a href="/">SlamDunker</a></h1>
+                <p class="white">This is a provisional, proof of concept demonstration on how we can get a first estimate on tweets that may originate from a person with malicious intentions.
+                    This model is quite eager in tagging a tweet as potential troll. Play around with it by typing your own tweet, or grabbing troll or nontroll tweets from our dataset!
+                </p>
+                <p class="white">
+                    We are in no way afiliated with Twitter and this project is only meant to be used for the course "Intelligent Systems Project" at UPC Barcelona. 
+                </p>
+            </div>
+            <div class="row">
+                <form method="POST" action="/submit" style="margin:0;">
+                <div class="input-group mb-3">
+                    <input type="text" name="tweet" value="{{text|default('', True)}}" id="tweet" class="form-control" placeholder="Tweet Body" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="submit-btn btn" type="submit" id="button-addon2">Analyze!</button>
+                </div>
+                <div class="links">
+                    <a href="/random?type=troll" id="randomTroll">Random troll tweet</a>
+                    <a href="/random?type=nontroll" id="randomReal">Random real tweet</a>
+                </div>
+                </form>
+            </div>
+            <p class="historyhead">History</p>
+            <div class="row history">
+                {% for (tweet, isTroll) in tweets %}
+                <div class="history-tweet">
+                    {% if not isTroll %}
+                        <img class="icon" src="/static/verified.png" />
+                    {% else %}
+                        <img class="icon" src="/static/error.png" />
+                    {% endif %}
+                    {{tweet}}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <script>
+            $(document).ready(() => {
+                $("#randomTroll").on("click", (e) => {
+
+                })
+            })
+        </script>
+    </body>
+</html>
