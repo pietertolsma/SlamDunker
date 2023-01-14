@@ -8,9 +8,9 @@ We started off with a pretrained DistilBERT model from Huggingface and refined t
 
 ## Running the project
 - Download the model [here](https://drive.google.com/file/d/1xXIiFc-eTr8E3PxZ6BW1KpJ5Rw38MXJw/view?usp=share_link). Store it in `/site/model.bin`.
-- Make sure you have installed [Poetry](https://python-poetry.org/docs/)
+- Make sure you have installed [Poetry](https://python-poetry.org/docs/) and Python 3.10.
 - Enter the `site` folder and run `poetry install`
-- Start up the server by running `poetry run flask --app run run`
+- Start up the server by running `poetry run flask --app app run`
 - Visit the website at `localhost:5000`
 
 ## Training the model
