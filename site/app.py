@@ -28,7 +28,7 @@ class Classifier(nn.Module):
         return torch.relu(res)
 model = Classifier()
 
-model.load_state_dict(torch.load("./model(2).bin"))
+model.load_state_dict(torch.load("./model.bin"))
 
 
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
